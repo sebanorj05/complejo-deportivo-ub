@@ -1,0 +1,33 @@
+{
+  "name": "complejo-deportivo-ub-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de Gestión de Reservas y Torneos - Complejo Deportivo UB (Frontend React + Backend Express TypeScript + Base de Datos MySQL)",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "test": "npm --prefix backend run test",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "keywords": [
+    "complejo-deportivo",
+    "react",
+    "typescript",
+    "nodejs",
+    "express",
+    "mysql",
+    "torneos",
+    "reservas"
+  ],
+  "author": "Norjean, Marco, Pérez del Cerro y Paiva - Universidad de Belgrano",
+  "license": "ISC"
+}
