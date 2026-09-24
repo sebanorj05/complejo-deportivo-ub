@@ -41,7 +41,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({
     {
       title: 'Acciones Auditadas',
       value: String(auditLogs.length),
-      sub: 'Trazabilidad RF-26',
+      sub: 'Trazabilidad de eventos',
       icon: '🛡️',
       color: '#a855f7'
     }
@@ -145,7 +145,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({
         <div className="lg:col-span-5 bg-[#1e281d] border border-[#5a7056] rounded-2xl p-6 shadow-xl flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-base font-bold text-white">Auditoría Reciente (RF-26)</h2>
+              <h2 className="text-base font-bold text-white">Auditoría Reciente</h2>
               <p className="text-xs text-[#a0a0a0]">Últimos movimientos del sistema.</p>
             </div>
             <button

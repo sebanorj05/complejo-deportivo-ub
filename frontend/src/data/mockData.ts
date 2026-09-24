@@ -109,7 +109,7 @@ export interface NotificationItem {
   type: 'reserva' | 'torneo' | 'sancion' | 'info';
 }
 
-// LÍMITES DE JUGADORES POR DEPORTE (RF-08)
+// LÍMITES DE JUGADORES POR DEPORTE
 export const SQUAD_LIMITS: Record<SportType, { min: number; max: number }> = {
   'Fútbol 5': { min: 5, max: 10 },
   'Fútbol 8': { min: 8, max: 14 },
@@ -371,7 +371,7 @@ export const INITIAL_FIXTURES: FixtureMatch[] = [
     time: '-',
     court: '-',
     status: 'Disputado',
-    observations: 'Fecha libre rotativa asignada por cantidad impar de equipos (RF-09).'
+    observations: 'Fecha libre rotativa asignada por cantidad impar de equipos.'
   },
   {
     id: 4,
@@ -413,7 +413,7 @@ export const INITIAL_FIXTURES: FixtureMatch[] = [
     time: '-',
     court: '-',
     status: 'Programado',
-    observations: 'Fecha libre rotativa (RF-09).'
+    observations: 'Fecha libre rotativa.'
   }
 ];
 
@@ -435,7 +435,7 @@ export const INITIAL_REFEREES: Referee[] = [
   { id: 'arb-5', name: 'Javier Castrilli', badgeNumber: 'ARB-TEN-003', sport: 'Tenis', activeMatches: 1 }
 ];
 
-// REGISTRO DE AUDITORÍA (RF-26)
+// REGISTRO DE AUDITORÍA
 export const INITIAL_AUDIT_LOGS: AuditLogItem[] = [
   {
     id: 'aud-1',
@@ -458,7 +458,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogItem[] = [
     timestamp: 'Ayer, 19:30 hs',
     adminName: 'Admin General',
     action: 'Bloqueo Fin de Semana',
-    detail: 'Canchas 1 y 2 reservadas para fixture de torneo los sábados de 18 a 23 hs (RF-06).',
+    detail: 'Canchas 1 y 2 reservadas para fixture de torneo los sábados de 18 a 23 hs.',
     type: 'cancha'
   },
   {
@@ -471,7 +471,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogItem[] = [
   }
 ];
 
-// NOTIFICACIONES (RF-23)
+// NOTIFICACIONES
 export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
   {
     id: 'notif-1',
@@ -499,7 +499,7 @@ export const INITIAL_NOTIFICATIONS: NotificationItem[] = [
   }
 ];
 
-// LISTA DE ESPERA (RF-24)
+// LISTA DE ESPERA
 export interface WaitlistEntry {
   id: string;
   courtName: string;

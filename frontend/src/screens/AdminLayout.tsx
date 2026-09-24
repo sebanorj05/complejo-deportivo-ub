@@ -16,14 +16,14 @@ export interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-const NAV_ITEMS: { id: AdminSection; label: string; icon: string; tag?: string }[] = [
+const NAV_ITEMS: { id: AdminSection; label: string; icon: string }[] = [
   { id: 'agenda', label: 'Agenda Diaria', icon: '📅' },
   { id: 'overview', label: 'Dashboard Overview', icon: '📊' },
-  { id: 'canchas', label: 'Gestión de Canchas', icon: '⚽', tag: 'RF-02' },
-  { id: 'torneo', label: 'Torneos y Fixture', icon: '🏆', tag: 'RF-07' },
-  { id: 'resultados', label: 'Cargar Resultados', icon: '📝', tag: 'RF-10' },
-  { id: 'reportes', label: 'Reportes y Métricas', icon: '📈', tag: 'RF-25' },
-  { id: 'auditoria', label: 'Log de Auditoría', icon: '🛡️', tag: 'RF-26' }
+  { id: 'canchas', label: 'Gestión de Canchas', icon: '⚽' },
+  { id: 'torneo', label: 'Torneos y Fixture', icon: '🏆' },
+  { id: 'resultados', label: 'Cargar Resultados', icon: '📝' },
+  { id: 'reportes', label: 'Reportes y Métricas', icon: '📈' },
+  { id: 'auditoria', label: 'Log de Auditoría', icon: '🛡️' }
 ];
 
 export const AdminLayout: React.FC<AdminLayoutProps> = ({
@@ -82,15 +82,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                   <span className="text-sm">{item.icon}</span>
                   <span>{item.label}</span>
                 </div>
-                {item.tag && (
-                  <span
-                    className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
-                      isActive ? 'bg-[#293827] text-[#65c556]' : 'bg-[#293827] text-[#a0a0a0]'
-                    }`}
-                  >
-                    {item.tag}
-                  </span>
-                )}
               </button>
             );
           })}

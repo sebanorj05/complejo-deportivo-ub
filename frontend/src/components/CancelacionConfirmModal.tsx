@@ -47,7 +47,7 @@ export const CancelacionConfirmModal: React.FC<CancelacionConfirmModalProps> = (
             </div>
             <div>
               <h3 className="font-bold text-[18px] text-white">¿Confirmar Cancelación?</h3>
-              <p className="text-[12px] text-[#a0a0a0]">Política de Cancelaciones (RF-04)</p>
+              <p className="text-[12px] text-[#a0a0a0]">Política de Cancelaciones</p>
             </div>
           </div>
 

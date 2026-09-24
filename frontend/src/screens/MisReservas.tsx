@@ -20,7 +20,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<'activos' | 'historial' | 'perfil' | 'notificaciones'>('activos');
   const [bookingToCancel, setBookingToCancel] = useState<BookingItem | null>(null);
 
-  // Invitaciones demo (RF-14 & RF-15)
+  // Invitaciones demo
   const [invitations, setInvitations] = useState([
     { id: 'inv-1', team: 'Pico y Pala FC', captain: 'Carlos Tévez', tournament: 'Copa Apertura F5', role: 'Delantero' },
     { id: 'inv-2', team: 'Volea Perfecta', captain: 'Guillermo Vilas', tournament: 'Torneo Relámpago Pádel', role: 'Drive' }
@@ -68,6 +68,13 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
           </button>
           <button
             type="button"
+            onClick={() => onNavigate('mis-torneos')}
+            className="text-xs font-semibold text-[#c0c0c0] hover:text-white transition-colors cursor-pointer bg-transparent border-none"
+          >
+            🏆 Torneos
+          </button>
+          <button
+            type="button"
             onClick={() => setActiveTab('activos')}
             className={`text-xs font-bold transition-colors cursor-pointer bg-transparent border-none ${
               activeTab === 'activos' ? 'text-[#65c556]' : 'text-[#c0c0c0]'
@@ -82,7 +89,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
               activeTab === 'perfil' ? 'text-[#65c556]' : 'text-[#c0c0c0]'
             }`}
           >
-            Mi Perfil (RF-12)
+            Mi Perfil
           </button>
           <button
             type="button"
@@ -98,14 +105,14 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
 
       {/* Main Container */}
       <div className="px-6 lg:px-12 py-8 flex flex-col gap-6 max-w-6xl mx-auto w-full">
-        {/* Absence Warning Banner (RF-05) */}
+        {/* Absence Warning Banner */}
         {isUserBanned ? (
           <div className="bg-[rgba(229,62,62,0.15)] border-2 border-[#e53e3e] rounded-2xl p-5 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="text-3xl">🚫</span>
               <div>
                 <h3 className="font-bold text-base text-[#e53e3e]">
-                  Cuenta Suspendida para Nuevas Reservas (RF-05)
+                  Cuenta Suspendida para Nuevas Reservas
                 </h3>
                 <p className="text-xs text-[#c0c0c0] mt-0.5">
                   Has acumulado <strong>3 inasistencias consecutivas</strong> a turnos reservados. De acuerdo a la normativa del complejo, tu cuenta está bloqueada durante 2 semanas.
@@ -120,7 +127,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
           <div className="bg-[rgba(245,158,11,0.15)] border border-[#f59e0b] rounded-2xl p-4 flex items-center gap-3 text-xs text-[#f59e0b]">
             <span className="text-xl">⚠️</span>
             <span>
-              <strong>Atención:</strong> Registrás <strong>{userAbsences}/3 inasistencias consecutivas</strong>. Si acumulás 3 faltas sin aviso previo, no podrás reservar canchas durante dos semanas (RF-05).
+              <strong>Atención:</strong> Registrás <strong>{userAbsences}/3 inasistencias consecutivas</strong>. Si acumulás 3 faltas sin aviso previo, no podrás reservar canchas durante dos semanas.
             </span>
           </div>
         ) : null}
@@ -167,7 +174,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
                   : 'text-[#a0a0a0] hover:text-white'
               }`}
             >
-              Mi Ficha & Equipos (RF-12, 13)
+              Mi Ficha & Equipos
             </button>
             <button
               type="button"
@@ -178,7 +185,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
                   : 'text-[#a0a0a0] hover:text-white'
               }`}
             >
-              Avisos (RF-23)
+              Notificaciones
             </button>
           </div>
         </div>
@@ -250,7 +257,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
                         onClick={() => setBookingToCancel(b)}
                         className="px-4 py-2.5 rounded-xl border border-[#e53e3e] text-[#e53e3e] hover:bg-[#e53e3e] hover:text-white font-bold text-xs transition-colors cursor-pointer"
                       >
-                        Cancelar Turno (RF-04)
+                        Cancelar Turno
                       </button>
 
                       <span className="text-[11px] text-[#a0a0a0]">
@@ -305,7 +312,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
           </div>
         )}
 
-        {/* TAB 3: FICHA DE JUGADOR & EQUIPOS (RF-12, RF-13, RF-14, RF-15) */}
+        {/* TAB 3: FICHA DE JUGADOR & EQUIPOS */}
         {activeTab === 'perfil' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Player Card */}
@@ -316,14 +323,14 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">Juan Pérez</h3>
-                  <p className="text-xs text-[#65c556] font-semibold">Capitán / Jugador Registrado (RF-12)</p>
+                  <p className="text-xs text-[#65c556] font-semibold">Capitán / Jugador Registrado</p>
                   <p className="text-xs text-[#a0a0a0]">DNI: 40.123.456 • juan.perez@ub.edu.ar</p>
                 </div>
               </div>
 
               <div className="border-t border-[#3b4d38] pt-4 flex flex-col gap-2">
                 <span className="text-xs font-bold text-[#a0a0a0] uppercase">
-                  Historial de Equipos y Torneos (RF-13)
+                  Historial de Equipos y Torneos
                 </span>
                 <div className="bg-[#293827] p-3.5 rounded-xl border border-[#5a7056] flex flex-col gap-2">
                   <div className="flex justify-between items-center">
@@ -347,12 +354,11 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Invitations to other teams (RF-14 & RF-15) */}
+            {/* Invitations to other teams */}
             <div className="bg-[#1e281d] border border-[#5a7056] rounded-2xl p-6 shadow-xl flex flex-col gap-4">
               <div>
                 <div className="flex items-center justify-between">
                   <h3 className="text-base font-bold text-white">Invitaciones de Equipos</h3>
-                  <span className="text-[11px] text-[#65c556] font-mono">RF-14 & RF-15</span>
                 </div>
                 <p className="text-xs text-[#a0a0a0] mt-0.5">
                   Capitanes que te convocaron para sumarte a sus planteles oficiales.
@@ -388,7 +394,7 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
                           onClick={() => handleAcceptInvite(inv.id, inv.team)}
                           className="flex-1 py-1.5 rounded-lg bg-[#65c556] hover:bg-[#57ef40] text-[#293827] font-bold text-xs cursor-pointer transition-colors"
                         >
-                          ✓ Aceptar Invitación (RF-15)
+                          ✓ Aceptar Invitación
                         </button>
                         <button
                           type="button"
@@ -406,12 +412,12 @@ export const MisReservas: React.FC<MisReservasProps> = ({ onNavigate }) => {
           </div>
         )}
 
-        {/* TAB 4: NOTIFICACIONES (RF-23) */}
+        {/* TAB 4: NOTIFICACIONES */}
         {activeTab === 'notificaciones' && (
           <div className="bg-[#1e281d] border border-[#5a7056] rounded-2xl p-6 shadow-xl flex flex-col gap-4">
             <div className="flex items-center justify-between border-b border-[#5a7056] pb-3">
               <div>
-                <h3 className="text-base font-bold text-white">Centro de Notificaciones (RF-23)</h3>
+                <h3 className="text-base font-bold text-white">Centro de Notificaciones</h3>
                 <p className="text-xs text-[#a0a0a0]">Avisos de reservas, señas, sanciones y torneos.</p>
               </div>
               <button

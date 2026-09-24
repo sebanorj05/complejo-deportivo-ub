@@ -68,7 +68,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           </p>
         </div>
 
-        {/* Role Selector Tabs (RF-01) */}
+        {/* Role Selector Tabs */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-semibold text-[#a0a0a0] uppercase tracking-wider">
             Seleccionar Perfil de Usuario para la Demostración

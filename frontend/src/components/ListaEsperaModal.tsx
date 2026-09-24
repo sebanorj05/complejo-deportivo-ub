@@ -52,7 +52,7 @@ export const ListaEsperaModal: React.FC<ListaEsperaModalProps> = ({
               </div>
               <div>
                 <h3 className="font-bold text-[18px] text-white">Lista de Espera</h3>
-                <p className="text-[12px] text-[#a0a0a0]">Requerimiento RF-24</p>
+                <p className="text-[12px] text-[#a0a0a0]">Aviso de cupo liberado</p>
               </div>
             </div>
 

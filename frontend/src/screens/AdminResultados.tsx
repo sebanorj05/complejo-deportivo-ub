@@ -32,9 +32,6 @@ export const AdminResultados: React.FC = () => {
       <div>
         <div className="flex items-center gap-2">
           <h1 className="font-bold text-2xl text-white">Carga de Resultados Oficiales</h1>
-          <span className="bg-[#65c556] text-[#293827] text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-            RF-10 & RF-11
-          </span>
         </div>
         <p className="font-normal text-sm text-[#a0a0a0] mt-1">
           Al guardar un resultado, el sistema recalcula automáticamente la tabla de posiciones con los criterios oficiales.

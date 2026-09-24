@@ -40,9 +40,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   const filteredCourts = courts.filter((c) => c.sport === selectedSport);
 
   const getSlotStatus = (courtName: string, hour: string) => {
-    // RF-06: Torneo de fin de semana bloquea canchas 1 y 2 en horarios de torneo
+    // Torneo de fin de semana bloquea canchas 1 y 2 en horarios de torneo
     if (isWeekend && (courtName.includes('Cancha 1') || courtName.includes('Cancha 2')) && (hour === '18:00 hs' || hour === '19:00 hs' || hour === '20:00 hs')) {
-      return { status: 'Torneo', label: '🏆 Torneo Oficial (RF-06)' };
+      return { status: 'Torneo', label: '🏆 Torneo Oficial' };
     }
     if (hour === '20:00 hs' || hour === '18:00 hs') {
       return { status: 'Ocupado', label: 'Ocupado' };
@@ -179,12 +179,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         </div>
 
-        {/* Weekend notice if applicable (RF-06) */}
+        {/* Weekend notice if applicable */}
         {isWeekend && (
           <div className="bg-[rgba(245,158,11,0.15)] border border-[#f59e0b] rounded-xl p-3 flex items-center gap-3 text-xs text-[#f59e0b]">
             <span className="text-base">🏆</span>
             <span>
-              <strong>Aviso de Fin de Semana (RF-06):</strong> Durante el fin de semana se disputan las fechas del torneo oficial en las canchas principales. Los horarios afectados están reservados exclusivamente para los partidos de liga.
+              <strong>Aviso de Fin de Semana:</strong> Durante el fin de semana se disputan las fechas del torneo oficial en las canchas principales. Los horarios afectados están reservados exclusivamente para los partidos de liga.
             </span>
           </div>
         )}
@@ -250,7 +250,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                                 onClick={() => handleOpenWaitlist(c.name, hour)}
                                 className="text-[10px] text-[#f59e0b] hover:underline cursor-pointer bg-transparent border-none font-semibold"
                               >
-                                ⏳ Lista de Espera (RF-24)
+                                ⏳ Lista de Espera
                               </button>
                             </div>
                           )}
@@ -289,7 +289,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             onClick={onOpenInscripcion}
             className="px-5 py-2.5 rounded-xl bg-[#65c556] hover:bg-[#57ef40] text-[#293827] font-bold text-xs shadow-lg transition-all cursor-pointer self-start md:self-auto"
           >
-            + Inscribir mi Equipo (RF-08)
+            + Inscribir mi Equipo
           </button>
         </div>
 
@@ -344,7 +344,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             Tabla de Posiciones Oficial — Copa Apertura Fútbol 5
           </h3>
           <p className="text-xs text-[#a0a0a0] mb-4">
-            Actualización inmediata tras la carga de resultados arbitrales (RF-11).
+            Actualización inmediata tras la carga de resultados arbitrales.
           </p>
 
           <div className="bg-[#293827] border border-[#5a7056] rounded-2xl overflow-hidden shadow-xl">
@@ -419,7 +419,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </div>
       </footer>
 
-      {/* Modal Lista de Espera (RF-24) */}
+      {/* Modal Lista de Espera */}
       <ListaEsperaModal
         isOpen={waitlistModal.isOpen}
         courtName={waitlistModal.courtName}

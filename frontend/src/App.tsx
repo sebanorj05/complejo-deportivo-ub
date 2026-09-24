@@ -90,12 +90,12 @@ const AppContent: React.FC = () => {
     { id: 'mis-torneos', label: '4. Torneos & Posiciones', role: 'Cliente', tag: 'RF-07, 09, 11' },
     { id: 'arbitro', label: '5. Panel Árbitro', role: 'Árbitro', tag: 'RF-10, 19, 20' },
     { id: 'admin-agenda', label: '6. Agenda & Inasistencias', role: 'Admin', tag: 'RF-05, 06' },
-    { id: 'admin-overview', label: '6. Dashboard Overview', role: 'Admin' },
-    { id: 'admin-canchas', label: '7. ABM Canchas', role: 'Admin', tag: 'RF-02' },
-    { id: 'admin-torneo', label: '8. Torneos & Fixture', role: 'Admin', tag: 'RF-07, 09' },
-    { id: 'admin-resultados', label: '9. Carga Resultados', role: 'Admin', tag: 'RF-10, 11' },
-    { id: 'admin-reportes', label: '10. Reportes', role: 'Admin', tag: 'RF-25' },
-    { id: 'admin-auditoria', label: '11. Auditoría', role: 'Admin', tag: 'RF-26' }
+    { id: 'admin-overview', label: '7. Dashboard Overview', role: 'Admin' },
+    { id: 'admin-canchas', label: '8. ABM Canchas', role: 'Admin', tag: 'RF-02' },
+    { id: 'admin-torneo', label: '9. Torneos & Fixture', role: 'Admin', tag: 'RF-07, 09' },
+    { id: 'admin-resultados', label: '10. Carga Resultados', role: 'Admin', tag: 'RF-10, 11' },
+    { id: 'admin-reportes', label: '11. Reportes', role: 'Admin', tag: 'RF-25' },
+    { id: 'admin-auditoria', label: '12. Auditoría', role: 'Admin', tag: 'RF-26' }
   ];
 
   return (
@@ -119,7 +119,7 @@ const AppContent: React.FC = () => {
           </div>
 
           {/* Quick Screen Switcher */}
-          <div className="flex items-center gap-1 overflow-x-auto py-1 max-w-full">
+          <div className="flex items-center gap-1 overflow-x-auto py-1 max-w-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {screensConfig.map((s) => {
               const isActive = currentScreen === s.id;
               return (

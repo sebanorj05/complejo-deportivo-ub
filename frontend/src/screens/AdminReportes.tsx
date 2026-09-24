@@ -26,9 +26,6 @@ export const AdminReportes: React.FC = () => {
       <div>
         <div className="flex items-center gap-2">
           <h1 className="font-bold text-2xl text-white">Reportes Administrativos</h1>
-          <span className="bg-[#65c556] text-[#293827] text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-            RF-25
-          </span>
         </div>
         <p className="font-normal text-sm text-[#a0a0a0] mt-1">
           Métricas de recaudación por señas, ocupación por deporte y control de inasistencias.
@@ -75,7 +72,7 @@ export const AdminReportes: React.FC = () => {
 
         <div className="bg-[#1e281d] border border-[#5a7056] p-5 rounded-2xl flex flex-col gap-1 shadow-lg">
           <span className="text-xs font-bold text-[#a0a0a0] uppercase tracking-wider">
-            Sanciones Activas (RF-05)
+            Sanciones Activas
           </span>
           <span className="text-2xl font-black text-[#e53e3e]">
             {userAbsences >= 3 ? 1 : 0} cuentas

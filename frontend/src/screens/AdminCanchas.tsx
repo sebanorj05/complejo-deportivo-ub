@@ -42,9 +42,6 @@ export const AdminCanchas: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="font-bold text-2xl text-white">Gestión de Canchas</h1>
-            <span className="bg-[#65c556] text-[#293827] text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-              RF-02
-            </span>
           </div>
           <p className="font-normal text-sm text-[#a0a0a0] mt-1">
             Alta, baja, tarifas fijas y estado de mantenimiento de las instalaciones deportivas.
@@ -131,7 +128,7 @@ export const AdminCanchas: React.FC = () => {
         >
           <div className="bg-[#1e281d] rounded-2xl border border-[#5a7056] w-full max-w-[460px] p-6 shadow-2xl text-white font-['Inter',sans-serif]">
             <div className="flex items-center justify-between border-b border-[#5a7056] pb-3 mb-4">
-              <h3 className="text-lg font-bold text-white">Alta de Nueva Cancha (RF-02)</h3>
+              <h3 className="text-lg font-bold text-white">Alta de Nueva Cancha</h3>
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="text-[#a0a0a0] hover:text-white cursor-pointer bg-transparent border-none text-base"

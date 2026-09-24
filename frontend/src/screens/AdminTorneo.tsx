@@ -69,9 +69,6 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
         <div>
           <div className="flex items-center gap-2">
             <h1 className="font-bold text-2xl text-white">Administración de Torneos</h1>
-            <span className="bg-[#65c556] text-[#293827] text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-              RF-07 al RF-11
-            </span>
           </div>
           <p className="font-normal text-sm text-[#a0a0a0] mt-1">
             Modalidad Liga (todos contra todos), fixtures automáticos con fecha libre y tabla de posiciones.
@@ -95,7 +92,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#65c556] hover:bg-[#57ef40] text-[#293827] font-bold text-sm shadow-lg shadow-[rgba(101,197,86,0.25)] transition-all cursor-pointer border-none"
           >
             <span>+</span>
-            <span>Nuevo Torneo (RF-07)</span>
+            <span>Nuevo Torneo</span>
           </button>
         </div>
       </div>
@@ -104,8 +101,8 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
       <div className="flex items-center gap-2 border-b border-[#5a7056] pb-3">
         {[
           { id: 'torneos', label: 'Torneos Activos', icon: '🏆' },
-          { id: 'fixture', label: 'Fixture Oficial & Árbitros (RF-09 & RF-17)', icon: '📅' },
-          { id: 'tabla', label: 'Tabla de Posiciones Oficial (RF-11)', icon: '📊' }
+          { id: 'fixture', label: 'Fixture Oficial & Árbitros', icon: '📅' },
+          { id: 'tabla', label: 'Tabla de Posiciones Oficial', icon: '📊' }
         ].map((tab) => (
           <button
             key={tab.id}
@@ -200,7 +197,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
             <div>
               <h3 className="text-lg font-bold text-white">Fixture del Torneo Liga Todos Contra Todos</h3>
               <p className="text-xs text-[#a0a0a0] mt-0.5">
-                Generado automáticamente con asignación de canchas y rotación de fechas libres (RF-09).
+                Generado automáticamente con asignación de canchas y rotación de fechas libres.
               </p>
             </div>
             <span className="bg-[#293827] text-[#65c556] border border-[#5a7056] px-3 py-1 rounded-lg text-xs font-mono">
@@ -231,7 +228,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
                         : 'bg-[#1e281d] text-[#c0c0c0]'
                     }`}
                   >
-                    {m.isFreeDate ? 'Fecha Libre (RF-09)' : m.status}
+                    {m.isFreeDate ? 'Fecha Libre' : m.status}
                   </span>
                 </div>
 
@@ -271,7 +268,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
                       Árbitro: <strong className="text-white">{m.refereeName || 'Sin asignar'}</strong>
                     </span>
 
-                    {/* Quick Referee Assignment (RF-17) */}
+                    {/* Quick Referee Assignment */}
                     <select
                       value={m.refereeName || ''}
                       onChange={(e) => assignReferee(m.id, e.target.value)}
@@ -299,7 +296,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
             <div>
               <h3 className="text-base font-bold text-white">Tabla Oficial de Posiciones</h3>
               <p className="text-xs text-[#a0a0a0]">
-                Criterio: Puntos &gt; Dif. Goles &gt; Goles a Favor (RF-11)
+                Criterio: Puntos &gt; Dif. Goles &gt; Goles a Favor
               </p>
             </div>
             <span className="bg-[#293827] text-[#65c556] border border-[#5a7056] px-3 py-1 rounded-lg text-xs font-bold">
@@ -369,7 +366,7 @@ export const AdminTorneo: React.FC<AdminTorneoProps> = ({ onOpenInscripcion }) =
         >
           <div className="bg-[#1e281d] rounded-2xl border border-[#5a7056] w-full max-w-[500px] p-6 shadow-2xl text-white font-['Inter',sans-serif]">
             <div className="flex items-center justify-between border-b border-[#5a7056] pb-3 mb-4">
-              <h3 className="text-lg font-bold text-white">Crear Nuevo Torneo (RF-07)</h3>
+              <h3 className="text-lg font-bold text-white">Crear Nuevo Torneo</h3>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
                 className="text-[#a0a0a0] hover:text-white cursor-pointer bg-transparent border-none text-base"

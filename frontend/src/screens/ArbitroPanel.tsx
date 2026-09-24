@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useComplejo } from '../context/ComplejoContext';
 import { type FixtureMatch } from '../data/mockData';
 
-export const ArbitroPanel: React.FC = () => {
+export interface ArbitroPanelProps {
+  onNavigate?: (screen: any) => void;
+}
+
+export const ArbitroPanel: React.FC<ArbitroPanelProps> = ({ onNavigate }) => {
   const { fixtures, saveMatchResult, tournaments } = useComplejo();
 
   // Filtrar partidos asignados a este árbitro (o todos para la demo si no hay filtro)
@@ -100,6 +104,16 @@ export const ArbitroPanel: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          {onNavigate && (
+            <button
+              type="button"
+              onClick={() => onNavigate('mis-torneos')}
+              className="bg-[#293827] hover:bg-[#3b4d38] border border-[#5a7056] text-[#65c556] hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5"
+            >
+              <span>🏆</span>
+              <span>Ver Fixture y Posiciones</span>
+            </button>
+          )}
           <div className="bg-[#293827] border border-[#5a7056] px-4 py-2 rounded-xl text-center">
             <span className="block text-[11px] text-[#a0a0a0] uppercase font-semibold">Partidos a Dirigir</span>
             <span className="text-xl font-bold text-[#65c556]">{myMatches.length}</span>
@@ -116,7 +130,6 @@ export const ArbitroPanel: React.FC = () => {
         <div className="lg:col-span-5 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-bold text-white">Mis Encuentros Asignados</h2>
-            <span className="text-xs text-[#a0a0a0] font-medium">RF-17 & RF-18</span>
           </div>
 
           <div className="flex flex-col gap-3">
@@ -175,7 +188,7 @@ export const ArbitroPanel: React.FC = () => {
             <div className="flex items-center justify-between border-b border-[#5a7056] pb-4">
               <div>
                 <span className="text-xs text-[#65c556] font-bold uppercase tracking-wider">
-                  Planilla Digital de Partido (RF-10, RF-19, RF-20)
+                  Planilla Digital de Partido
                 </span>
                 <h3 className="text-xl font-extrabold text-white mt-0.5">
                   {selectedMatch.homeTeam} vs {selectedMatch.awayTeam}
@@ -226,7 +239,7 @@ export const ArbitroPanel: React.FC = () => {
               {/* Status Selector */}
               <div>
                 <label className="text-xs font-semibold text-[#a0a0a0] uppercase block mb-2">
-                  Estado del Encuentro (RF-19)
+                  Estado del Encuentro
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {(['Programado', 'Disputado', 'Suspendido', 'Reprogramado'] as FixtureMatch['status'][]).map((st) => (
@@ -246,11 +259,11 @@ export const ArbitroPanel: React.FC = () => {
                 </div>
               </div>
 
-              {/* Disciplinary Section (Tarjetas y Sanciones RF-20) */}
+              {/* Disciplinary Section (Tarjetas y Sanciones) */}
               <div className="border-t border-[#3b4d38] pt-4 flex flex-col gap-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-[#a0a0a0] uppercase">
-                    Incidencias y Tarjetas (RF-20)
+                    Incidencias y Tarjetas
                   </span>
                   <span className="text-[11px] text-[#65c556]">Informe Disciplinario</span>
                 </div>

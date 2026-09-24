@@ -104,7 +104,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => saveTo('notifications', notifications), [notifications]);
   useEffect(() => saveTo('userAbsences', userAbsences), [userAbsences]);
 
-  const isUserBanned = userAbsences >= 3; // RF-05: 3 inasistencias consecutivas bloquean 2 semanas
+  const isUserBanned = userAbsences >= 3; // 3 inasistencias consecutivas bloquean 2 semanas
 
   const logAudit = (action: string, detail: string, type: AuditLogItem['type']) => {
     const newLog: AuditLogItem = {
@@ -130,7 +130,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setNotifications((prev) => [newNotif, ...prev]);
   };
 
-  // RF-03: Reserva de turnos con seña del 30%
+  // Reserva de turnos con seña del 30%
   const bookCourt = (courtId: string, courtName: string, sport: SportType, date: string, time: string): BookingItem => {
     const totalPrice = SPORT_PRICING[sport] || 18000;
     const depositPaid = Math.round(totalPrice * 0.3);
@@ -162,7 +162,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return newBooking;
   };
 
-  // RF-04: Cancelación de reservas con regla de 24 horas
+  // Cancelación de reservas con regla de 24 horas
   const cancelBooking = (bookingId: string) => {
     const target = bookings.find((b) => b.id === bookingId);
     if (!target) return { refunded: false, depositAmount: 0, message: 'Reserva no encontrada' };
@@ -188,7 +188,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return { refunded: isRefundable, depositAmount: deposit, message: msg };
   };
 
-  // RF-24: Lista de espera
+  // Lista de espera
   const joinWaitlist = (courtName: string, date: string, time: string, userName: string, userPhone: string): number => {
     const currentCountForSlot = waitlist.filter((w) => w.courtName === courtName && w.time === time).length;
     const position = currentCountForSlot + 1;
@@ -206,7 +206,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return position;
   };
 
-  // RF-02: Gestión de canchas
+  // Gestión de canchas
   const addCourt = (courtData: Omit<Court, 'id' | 'nextSlot'>) => {
     const newCourt: Court = {
       ...courtData,
@@ -239,7 +239,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     );
   };
 
-  // RF-07: Creación de torneos
+  // Creación de torneos
   const createTournament = (tourneyData: Omit<Tournament, 'id' | 'registeredTeams'>) => {
     const newT: Tournament = {
       ...tourneyData,
@@ -251,12 +251,12 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     addNotification('Nuevo Torneo Abierto', `Inscripciones abiertas para "${newT.name}".`, 'torneo');
   };
 
-  // RF-08 & RF-16: Inscripción de equipos y control de participación
+  // Inscripción de equipos y control de participación
   const registerTeam = (tournamentId: string, teamName: string, players: { name: string; dni: string; position: string }[]) => {
     const tourney = tournaments.find((t) => t.id === tournamentId);
     if (!tourney) return { success: false, error: 'Torneo no encontrado' };
 
-    // RF-16: Control de participación (1 jugador no puede participar en >1 equipo del mismo torneo)
+    // Control de participación (1 jugador no puede participar en >1 equipo del mismo torneo)
     const existingPlayersDni = new Set<string>();
     tourney.registeredTeams.forEach((tm) => {
       tm.players.forEach((p) => existingPlayersDni.add(p.dni.trim()));
@@ -266,7 +266,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       if (existingPlayersDni.has(p.dni.trim())) {
         return {
           success: false,
-          error: `El jugador ${p.name} (DNI ${p.dni}) ya está inscripto en otro equipo de este mismo torneo (Infracción RF-16).`
+          error: `El jugador ${p.name} (DNI ${p.dni}) ya está inscripto en otro equipo de este mismo torneo.`
         };
       }
     }
@@ -289,7 +289,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return { success: true };
   };
 
-  // RF-10 & RF-11: Carga de resultados y actualización automática de tabla de posiciones
+  // Carga de resultados y actualización automática de tabla de posiciones
   const saveMatchResult = (
     matchId: number,
     homeScore: number,
@@ -323,7 +323,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       })
     );
 
-    // RF-11: Recalcular tabla de posiciones dinámicamente si disputado
+    // Recalcular tabla de posiciones dinámicamente si disputado
     if (status === 'Disputado' && homeTeam && awayTeam) {
       setStandings((prev) => {
         const table = prev.map((row) => ({ ...row }));
@@ -386,7 +386,7 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   };
 
-  // RF-17: Asignación de árbitros
+  // Asignación de árbitros
   const assignReferee = (matchId: number, refereeName: string) => {
     setFixtures((prev) =>
       prev.map((m) => (m.id === matchId ? { ...m, refereeName } : m))
@@ -394,14 +394,14 @@ export const ComplejoProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     logAudit('Designación Arbitral', `Árbitro ${refereeName} asignado al partido ID #${matchId}.`, 'torneo');
   };
 
-  // RF-05: Control de inasistencias (3 consecutivas = suspensión 2 semanas)
+  // Control de inasistencias (3 consecutivas = suspensión 2 semanas)
   const markAbsence = (clientName: string, courtName: string) => {
     setUserAbsences((prev) => {
       const next = prev + 1;
       if (next >= 3) {
         addNotification(
           '⚠️ SANCIÓN APLICADA: Suspensión por Inasistencias',
-          `El usuario ${clientName} ha acumulado 3 inasistencias consecutivas. Cuenta suspendida por 2 semanas para nuevas reservas (RF-05).`,
+          `El usuario ${clientName} ha acumulado 3 inasistencias consecutivas. Cuenta suspendida por 2 semanas para nuevas reservas.`,
           'sancion'
         );
         logAudit(

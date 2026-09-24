@@ -92,19 +92,16 @@ export const AdminAgenda: React.FC = () => {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="font-bold text-2xl text-white">Agenda Diaria de Turnos</h1>
-            <span className="bg-[#65c556] text-[#293827] text-[11px] font-extrabold px-2.5 py-0.5 rounded-full">
-              RF-05 & RF-06
-            </span>
           </div>
           <p className="font-normal text-sm text-[#a0a0a0] mt-1">
             Control de disponibilidad, inasistencias reiteradas y bloqueo por torneos de fin de semana.
           </p>
         </div>
 
-        {/* Weekend Tournament Switcher (RF-06) */}
+        {/* Weekend Tournament Switcher */}
         <div className="flex items-center gap-3 bg-[#1e281d] border border-[#5a7056] px-4 py-2.5 rounded-xl">
           <span className="text-xs font-semibold text-[#c0c0c0]">
-            Torneo de Fin de Semana (RF-06):
+            Torneo de Fin de Semana:
           </span>
           <button
             type="button"
@@ -127,14 +124,14 @@ export const AdminAgenda: React.FC = () => {
         </div>
       </div>
 
-      {/* User Suspension Alert (RF-05) */}
+      {/* User Suspension Alert */}
       {isUserBanned && (
         <div className="bg-[rgba(229,62,62,0.15)] border-2 border-[#e53e3e] rounded-2xl p-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="text-2xl">🚫</span>
             <div>
               <p className="font-bold text-sm text-[#e53e3e]">
-                Sanción Activa por Inasistencias (RF-05)
+                Sanción Activa por Inasistencias
               </p>
               <p className="text-xs text-[#c0c0c0]">
                 El usuario demo Juan Pérez ha acumulado <strong>3 inasistencias consecutivas</strong>. Suspensión de reservas vigente por 2 semanas.
@@ -152,7 +149,7 @@ export const AdminAgenda: React.FC = () => {
         <div className="bg-[rgba(245,158,11,0.15)] border border-[#f59e0b] rounded-xl p-3 flex items-center gap-3 text-xs text-[#f59e0b]">
           <span>🏆</span>
           <span>
-            <strong>RF-06 Activo:</strong> El sistema detectó torneos programados para este fin de semana. Las reservas comunes quedan deshabilitadas en horarios asignados al fixture.
+            <strong>Torneo Activo:</strong> El sistema detectó torneos programados para este fin de semana. Las reservas comunes quedan deshabilitadas en horarios asignados al fixture.
           </span>
         </div>
       )}
@@ -201,7 +198,7 @@ export const AdminAgenda: React.FC = () => {
                             )}
                           </div>
 
-                          {/* Action button for RF-05: mark absence */}
+                          {/* Action button: mark absence */}
                           {slot.occupied && !slot.tournament && !slot.absent && slot.client && (
                             <button
                               type="button"
@@ -209,7 +206,7 @@ export const AdminAgenda: React.FC = () => {
                               className="text-[10px] self-start mt-1 text-[#e53e3e] hover:underline cursor-pointer bg-transparent border-none p-0 font-medium"
                               title="Si el cliente acumula 3 faltas consecutivas queda suspendido por 2 semanas"
                             >
-                              ✕ Marcar Inasistencia (RF-05)
+                              ✕ Marcar Inasistencia
                             </button>
                           )}
                         </div>

@@ -77,7 +77,7 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
     e.preventDefault();
     setErrorMessage(null);
 
-    // RF-08: Check squad min
+    // Check squad min
     if (players.length < limits.min) {
       setErrorMessage(
         `Plantel insuficiente: se requiere un mínimo de ${limits.min} jugadores para ${currentTourney.sport} (actualmente hay ${players.length}).`
@@ -85,7 +85,7 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
       return;
     }
 
-    // Call context registerTeam which checks RF-16 duplicate players in same tournament
+    // Call context registerTeam which checks duplicate players in same tournament
     const res = registerTeam(selectedTourneyId, teamName, players);
     if (!res.success) {
       setErrorMessage(res.error || 'Error al inscribir equipo');
@@ -118,9 +118,6 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <h2 className="font-bold text-lg text-white">Inscripción de Equipo a Torneo</h2>
-              <span className="bg-[#65c556] text-[#293827] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
-                RF-08 & RF-16
-              </span>
             </div>
             <p className="text-xs text-[#a0a0a0] mt-0.5">
               Control automático de cupo por deporte y control de jugador único.
@@ -206,7 +203,7 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
           <div className="flex flex-col gap-2">
             <div className="flex justify-between items-center">
               <label className="text-xs font-semibold text-[#a0a0a0] uppercase">
-                Lista de Jugadores Oficiales (RF-08)
+                Lista de Jugadores Oficiales
               </label>
               <button
                 type="button"
@@ -235,7 +232,7 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
                   <input
                     type="text"
                     required
-                    placeholder="DNI (Validación RF-16)"
+                    placeholder="Número de DNI"
                     value={p.dni}
                     onChange={(e) => handlePlayerChange(p.id, 'dni', e.target.value)}
                     className="w-28 bg-[#1e281d] border border-[#5a7056] rounded px-2 py-1 text-xs text-white font-mono"
@@ -262,7 +259,7 @@ export const InscripcionTorneoModal: React.FC<InscripcionTorneoModalProps> = ({
           </div>
 
           <p className="text-[11px] text-[#a0a0a0] italic">
-            * El sistema verifica que ningún jugador esté inscripto en más de un equipo en el mismo torneo (RF-16).
+            * El sistema verifica que ningún jugador esté inscripto en más de un equipo en el mismo torneo.
           </p>
 
           {/* Actions */}
